@@ -9,7 +9,7 @@ public class ActionListenerInformations implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if(FrMain.wpList.getSelectedValue()!=null)
 		{
-			String t[]=FrMain.bdd.selectWordComplet((String)FrMain.wpList.getSelectedValue());
+			String t[]=FrMain.bdd.selectWordComplet(((String)FrMain.wpList.getSelectedValue()).substring(3));
 			FrMain.ip.affInfoWord(t);
 			FrMain.w.reactualise();
 		}

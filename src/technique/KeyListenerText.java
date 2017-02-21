@@ -17,7 +17,7 @@ public class KeyListenerText implements KeyListener{
 			int key=arg0.getKeyChar()-'0';
 			if(FrMain.dlt.words!=null && FrMain.dlt.words.length>key)
 			{
-				String word= FrMain.dlt.words[key];
+				String word= FrMain.dlt.words[key].substring(3);
 				String strrcv=FrMain.cpText.getText().substring(0,FrMain.cpText.getCaretPosition());
 				String[] table=strrcv.split(" ");
 				if(table.length>0)

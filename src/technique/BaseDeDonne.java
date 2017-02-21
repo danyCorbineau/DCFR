@@ -69,7 +69,6 @@ public class BaseDeDonne {
 		Statement stmt;
 		rqt="SELECT ortographe AS Orthographe,lemme AS Lemme, categorie_grammatical AS \"Catégorie grammaticale\", genre AS Genre, nombre AS Nombre, infoverbe AS \"Information verbe\" FROM lexique WHERE ortographe='"+word+"';";
 		
-		
 		try {
 			stmt = c.createStatement();
 			
@@ -89,5 +88,56 @@ public class BaseDeDonne {
 		return ret;
 	}
 	
+	public boolean verbeExist(String verbe)
+	{
+		ResultSet rs=null;
+		String rqt;
+		Statement stmt;
+		rqt="SELECT ortographe FROM lexique WHERE ortographe='"+verbe+"' AND categorie_grammatical LIKE '%V%' AND infoverbe LIKE '%inf%';";
+		boolean ret=false;
+		
+		try {
+			stmt = c.createStatement();
+			
+			rs = stmt.executeQuery(rqt);
+			
+			if(rs.next())
+			{
+				System.out.println(rs.getString(1));
+				ret=true;
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	public String[] listVerb(String word)
+	{
+		ResultSet rs=null;
+		String rqt;
+		Statement stmt;
+		rqt="SELECT ortographe FROM lexique WHERE ortographe LIKE '"+word+"%' AND categorie_grammatical LIKE '%V%' AND infoverbe LIKE '%inf%' LIMIT 6;";
+		String ret[]=null;
+		
+		try {
+			stmt = c.createStatement();
+			
+			rs = stmt.executeQuery(rqt);
+			
+			ret=new String[6];
+			for(int j=0;rs.next();j++)
+			{
+				ret[j]=rs.getString(1);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
 	
 }

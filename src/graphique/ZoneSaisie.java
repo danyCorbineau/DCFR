@@ -17,7 +17,6 @@ public class ZoneSaisie extends JTextArea{
 		this.setBorder(BorderFactory.createLineBorder(Color.gray));
 		
 		TitledBorder title;
-		title = BorderFactory.createTitledBorder("Zone de text");
 		title = BorderFactory.createTitledBorder(
                 this.getBorder(), "Zone de text");
 		title.setTitleJustification(TitledBorder.CENTER);

@@ -17,6 +17,7 @@ import graphique.ZoneSaisie;
 import technique.ActionListenerColler;
 import technique.ActionListenerCopier;
 import technique.ActionListenerInformations;
+import technique.ActionListenerVerbe;
 import technique.BaseDeDonne;
 import technique.DocumentListenerText;
 import technique.FrWindowListener;
@@ -37,6 +38,7 @@ public class FrMain {
 	public static DocumentListenerText dlt;
 	public static ActionListenerInformations ali;
 	public static KeyListenerText klt;
+	public static ActionListenerVerbe alv;
 	
 	
 	public static JButton bpColler, bpCopier, bpInfo;
@@ -66,6 +68,7 @@ public class FrMain {
 		dlt=new DocumentListenerText();
 		ali=new ActionListenerInformations();
 		klt=new KeyListenerText();
+		alv=new ActionListenerVerbe();
 		
 		/*
 		 * button +
@@ -109,6 +112,7 @@ public class FrMain {
 		cpText.getDocument().addDocumentListener(dlt);
 		bpInfo.addActionListener(ali);
 		cpText.addKeyListener(klt);
+		mChercheVerbe.addActionListener(alv);
 		
 		w.setVisible(true);
 		

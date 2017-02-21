@@ -1,6 +1,5 @@
 package technique;
 
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -27,6 +26,9 @@ public class DocumentListenerText implements DocumentListener{
 		if(word.length()>2 && word.length()<20)
 		{
 			words=FrMain.bdd.selectWord(word, limit, order);
+			for(int j=0;j<words.length;j++)
+				words[j]=j+": "+words[j];
+				
 			if(words!=null)
 			{
 				FrMain.wpList=new JList<String>(words);
